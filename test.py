@@ -3,7 +3,7 @@ from model import FSRCNN
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--scale',     type=int, default=2,  help='-')
+parser.add_argument('--scale',     type=int, default=3,  help='-')
 parser.add_argument('--ckpt-path', type=str, default="", help='-')
 
 # -----------------------------------------------------------
@@ -14,13 +14,13 @@ FLAGS, unparsed = parser.parse_known_args()
 scale = FLAGS.scale
 ckpt_path = FLAGS.ckpt_path
 
-if scale not in [2, 3, 4]:
-    raise ValueError("scale must be 2, 3, or 4")
+if scale != 3:
+    raise ValueError("Only scale=3 is supported in this version.")
 
 if (ckpt_path == "") or (ckpt_path == "default"):
     ckpt_path = f"checkpoint/x{scale}/FSRCNN-x{scale}.pt"
 
-sigma = 0.3 if scale == 2 else 0.2
+sigma = 0.2
 
 
 # -----------------------------------------------------------

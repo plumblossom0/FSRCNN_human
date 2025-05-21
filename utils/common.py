@@ -7,6 +7,8 @@ import os
 def read_image(filepath):
     image = io.read_image(filepath, io.ImageReadMode.RGB)
     return image
+#이미지 파일을 RGB 모드로 읽어옵니다 (C x H x W 형식, 값 범위 0~255)
+#반환값: torch.uint8 타입의 3채널 이미지 텐서
 
 def write_image(filepath, src):
     io.write_png(src, filepath)
